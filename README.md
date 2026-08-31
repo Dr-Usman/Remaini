@@ -3,6 +3,7 @@
 [![GitHub Stars](https://img.shields.io/github/stars/Dr-Usman/Remaini?style=social)](https://github.com/Dr-Usman/Remaini)
 [![License: MIT](https://img.shields.io/badge/License-MIT-purple.svg)](LICENSE)
 [![Flutter](https://img.shields.io/badge/Flutter-3.27+-02569B?logo=flutter)](https://flutter.dev)
+[![Google Play](https://img.shields.io/badge/Google_Play-Remaini-414141?logo=googleplay&logoColor=white)](https://play.google.com/store/apps/details?id=com.avenzor.remaini)
 
 > **Count every moment that matters.**  
 > A modern, production-ready, and minimal countdown mobile application built with Flutter.
@@ -35,7 +36,7 @@
 * **Dynamic 1-Second Ticker**: Continuous live-ticking countdown displaying **Years, Months, Weeks, Days, Hours, Minutes, and Seconds** with micro-slide transitions.
 * **Glowing Neon Circular Progress Ring**: Custom-painted circular progress ring showing elapsed ratio vs. total event lifespan.
 * **Dual Breakdown Views**:
-  * **Calendar Units View**: Grid of animated ticking glass cards.
+  * **Calendar Units View**: Grid of animated ticking glass cards (*Weeks, Days, Hours, Mins, Secs*).
   * **Cumulative Totals View**: Total Days, Total Hours, Total Minutes, and Total Seconds remaining.
 * **🎉 Milestone Celebration**: Confetti cannon explosion and celebration banner when a countdown reaches zero.
 * **Social Sharing**: One-tap formatted summary to share your countdown with friends.
@@ -47,11 +48,38 @@
 * **Notes & Pinning**: Add optional memo notes and pin important events to the top.
 
 ### 4. ⚙️ Settings & About Screen
-* **Appearance Switcher**: Visual cards for Dark Mode and Light Mode.
+* **Appearance Switcher**: Visual cards for System, Dark Mode, and Light Mode.
 * **Preferences**: Toggle haptic tactile feedback on/off.
 * **Community & Support**: Share Remaini with friends, leave a 5-star rating, and in-app contact support dialog.
 * **Data Management**: Seed sample countdowns and clear all local data with confirmation prompt.
 * **Legal & Privacy**: Built-in in-app Privacy Policy (100% offline, zero tracking) and Terms of Use modals.
+
+
+---
+
+## 📱 App Screenshots
+
+| Home (Light Mode) | Home (Dark Mode) | Detail (Calendar Units) |
+| :---: | :---: | :---: |
+| <img src="store_assets/screenshots/01_home_screen_light.png" width="260" alt="Home Screen Light" /> | <img src="store_assets/screenshots/02_home_screen_dark.png" width="260" alt="Home Screen Dark" /> | <img src="store_assets/screenshots/03_event_detail_units_light.png" width="260" alt="Event Detail Units" /> |
+
+| Detail (Totals View) | Add / Edit Event | Settings & Preferences |
+| :---: | :---: | :---: |
+| <img src="store_assets/screenshots/04_event_detail_totals_dark.png" width="260" alt="Detail Cumulative Totals" /> | <img src="store_assets/screenshots/05_add_event_screen_light.png" width="260" alt="Add Event Screen" /> | <img src="store_assets/screenshots/06_settings_screen_dark.png" width="260" alt="Settings Screen" /> |
+
+---
+
+## 📥 Download
+
+### Google Play Store
+Get the official, signed release on Google Play:
+
+<a href="https://play.google.com/store/apps/details?id=com.avenzor.remaini">
+  <img alt="Get it on Google Play" height="50" src="https://play.google.com/intl/en_us/badges/static/images/badges/en_badge_web_generic.png" />
+</a>
+
+### Release APK
+You can also download the latest standalone APK directly from the [GitHub Releases](https://github.com/Dr-Usman/Remaini/releases) section.
 
 ---
 
@@ -117,8 +145,8 @@ lib/
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/your-username/remaini.git
-   cd remaini
+   git clone https://github.com/Dr-Usman/Remaini.git
+   cd Remaini
    ```
 
 2. **Install dependencies**:
@@ -149,7 +177,6 @@ flutter test
 ```
 
 Run static analysis check:
-
 ```bash
 flutter analyze
 ```
@@ -160,4 +187,3 @@ flutter analyze
 
 * **License**: Licensed under the [MIT License](LICENSE) — see the [LICENSE](LICENSE) file for details.
 * **Privacy Policy**: Read our full [Privacy Policy](PRIVACY_POLICY.md).
-

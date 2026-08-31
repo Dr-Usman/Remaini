@@ -79,6 +79,7 @@ class HomeHeader extends StatelessWidget {
               ),
               // Settings Button
               GestureDetector(
+                behavior: HitTestBehavior.opaque,
                 onTap: () {
                   AppHaptics.light();
                   Get.toNamed(AppRoutes.settings);

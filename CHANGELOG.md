@@ -1,0 +1,40 @@
+# Changelog
+
+All notable changes to **Remaini** will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+---
+
+## [1.0.0] - 2026-08-31
+
+### 🎉 Initial Release
+
+#### Added
+- **🏠 Smart Event Feed & Spotlight**:
+  - Hero "Next Up" Spotlight card highlighting the nearest event.
+  - Dynamic urgency color badges (*Far Away*, *Approaching*, *Soon*, *Today*, *Completed*).
+  - Instant category filter chips (*Personal, Work, Birthday, Holiday, Travel, Milestone, Anniversary*).
+  - Search across event titles, categories, and memo notes.
+  - Custom sort options (*Nearest First, Furthest First, Title A-Z, Date Added*).
+  - Interactive swipe gestures (swipe left to delete with undo, swipe right to pin/unpin).
+
+- **⏱️ Precision Live Countdown Showcase**:
+  - Continuous 1-second live ticker stream with animated digit transitions.
+  - Custom-painted glowing neon circular countdown progress ring.
+  - Dual breakdown view switcher: **Calendar Units** (*Weeks, Days, Hours, Mins, Secs*) and **Cumulative Totals** (*Total Days, Hours, Minutes, Seconds*).
+  - Milestone celebration screen with confetti cannon explosion on zero.
+  - One-tap social sharing with formatted countdown summary.
+
+- **➕ Event Creation & Editor**:
+  - One-tap quick date presets (`Tomorrow`, `Weekend`, `+1 Week`, `+1 Month`, `New Year`).
+  - One-tap quick time presets (`9:00 AM`, `12:00 PM`, `6:00 PM`, `Midnight`).
+  - 8 category icons and 10 vibrant color swatches.
+  - Optional memo notes and event pinning.
+
+- **⚙️ Settings & Preferences**:
+  - Appearance selector for **System**, **Dark Mode**, and **Light Mode**.
+  - Tactile haptic feedback toggle.
+  - In-app sample data loader and storage management.
+  - In-app Privacy Policy modal (100% offline, zero data tracking).
