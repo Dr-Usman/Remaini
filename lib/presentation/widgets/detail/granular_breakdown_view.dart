@@ -23,32 +23,86 @@ class GranularBreakdownView extends StatelessWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final numberFormat = NumberFormat('#,###');
 
-    final items = [
+    final items = <_TotalUnitItem>[];
+
+    // Total Years (only if >= 1.0 Year, formatted with 1 decimal)
+    final totalYears = timeRemaining.totalDays / 365.25;
+    if (totalYears >= 1.0) {
+      items.add(
+        _TotalUnitItem(
+          title: 'Total Years',
+          value: totalYears.toStringAsFixed(1),
+          icon: CupertinoIcons.sparkles,
+          color: const Color(0xFFF59E0B),
+        ),
+      );
+    }
+
+    // Total Months (only if >= 1.0 Month, formatted with 1 decimal)
+    final totalMonths = timeRemaining.totalDays / 30.4375;
+    if (totalMonths >= 1.0) {
+      items.add(
+        _TotalUnitItem(
+          title: 'Total Months',
+          value: totalMonths.toStringAsFixed(1),
+          icon: CupertinoIcons.calendar_today,
+          color: const Color(0xFFA855F7),
+        ),
+      );
+    }
+
+    // Total Weeks (only if >= 1 Week / >= 7 Days, formatted as whole number)
+    final totalWeeks = timeRemaining.totalDays ~/ 7;
+    if (totalWeeks >= 1) {
+      items.add(
+        _TotalUnitItem(
+          title: 'Total Weeks',
+          value: numberFormat.format(totalWeeks),
+          icon: CupertinoIcons.square_grid_2x2_fill,
+          color: const Color(0xFF3B82F6),
+        ),
+      );
+    }
+
+    // Total Days
+    items.add(
       _TotalUnitItem(
         title: 'Total Days',
         value: numberFormat.format(timeRemaining.totalDays),
         icon: CupertinoIcons.calendar,
         color: const Color(0xFF6366F1),
       ),
+    );
+
+    // Total Hours
+    items.add(
       _TotalUnitItem(
         title: 'Total Hours',
         value: numberFormat.format(timeRemaining.totalHours),
         icon: CupertinoIcons.clock_fill,
         color: const Color(0xFF06B6D4),
       ),
+    );
+
+    // Total Minutes
+    items.add(
       _TotalUnitItem(
         title: 'Total Minutes',
         value: numberFormat.format(timeRemaining.totalMinutes),
         icon: CupertinoIcons.stopwatch_fill,
         color: const Color(0xFF10B981),
       ),
+    );
+
+    // Total Seconds (live ticking)
+    items.add(
       _TotalUnitItem(
         title: 'Total Seconds',
         value: numberFormat.format(timeRemaining.totalSeconds),
         icon: CupertinoIcons.flame_fill,
         color: const Color(0xFFEF4444),
       ),
-    ];
+    );
 
     return Column(
       children: items.map((item) {

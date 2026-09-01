@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [Unreleased]
+
+### Added
+- **Smart Adaptive Totals**: Added Total Years and Total Months (with 1-decimal precision) and Total Weeks (whole numbers) to the granular totals breakdown view.
+
+---
+
 ## [1.0.0] - 2026-08-31
 
 ### 🎉 Initial Release
