@@ -110,13 +110,52 @@ jobs:
           path: release_outputs/*
           retention-days: 14
 
+      - name: 📝 Extract Release Notes from CHANGELOG
+        env:
+          TAG_VERSION: ${{ steps.vars.outputs.tag }}
+          REPO_NAME: ${{ github.repository }}
+        run: |
+          python3 - << 'EOF'
+          import os, re, sys
+
+          tag_version = os.environ.get('TAG_VERSION', 'v1.0.0')
+          repo_name = os.environ.get('REPO_NAME', '')
+          version = tag_version.lstrip('v')
+          output_file = 'extracted_release_notes.md'
+
+          try:
+              with open('CHANGELOG.md', 'r', encoding='utf-8') as f:
+                  content = f.read()
+
+              pattern = rf'(?m)^##\s+\[?v?{re.escape(version)}\]?(?:\s*-\s*[^\n]*)?\s*\n(.*?)(?=(?:\n##\s+|\Z))'
+              match = re.search(pattern, content, re.DOTALL)
+
+              if match:
+                  notes = match.group(1).strip()
+                  notes = re.sub(r'\n---\s*$', '', notes).strip()
+                  with open(output_file, 'w', encoding='utf-8') as out:
+                      out.write(notes + '\n')
+                  print(f'✅ Successfully extracted release notes for {tag_version}')
+              else:
+                  print(f'⚠️ No section found in CHANGELOG.md for {tag_version}, using fallback')
+                  fallback_text = f'Release **{tag_version}**\n\n'
+                  if repo_name:
+                      fallback_text += f'See [CHANGELOG.md](https://github.com/{repo_name}/blob/main/CHANGELOG.md) for details.\n'
+                  with open(output_file, 'w', encoding='utf-8') as out:
+                      out.write(fallback_text)
+          except Exception as e:
+              print(f'⚠️ Error reading CHANGELOG.md: {e}')
+              with open(output_file, 'w', encoding='utf-8') as out:
+                  out.write(f'Release **{tag_version}**\n')
+          EOF
+
       - name: 🚀 Create GitHub Release & Attach Binaries
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/v') || github.event_name == 'workflow_dispatch'
         with:
           tag_name: ${{ steps.vars.outputs.tag }}
           name: "Remaini ${{ steps.vars.outputs.tag }} ⏳"
-          body_path: RELEASE_NOTES.md
+          body_path: extracted_release_notes.md
           generate_release_notes: true
           draft: false
           prerelease: false
