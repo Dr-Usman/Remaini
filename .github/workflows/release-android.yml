@@ -65,8 +65,8 @@ jobs:
             echo "⚠️ KEYSTORE_BASE64 not set, falling back to debug signing."
           fi
 
-      - name: 🏗️ Build Google Play App Bundle (AAB)
-        run: flutter build appbundle --release
+      # - name: 🏗️ Build Google Play App Bundle (AAB)
+      #   run: flutter build appbundle --release
 
       - name: 🏗️ Build Universal APK
         run: flutter build apk --release
@@ -85,7 +85,9 @@ jobs:
 
           mkdir -p release_outputs
 
-          cp build/app/outputs/bundle/release/app-release.aab release_outputs/Remaini-android-${VERSION_TAG}.aab
+          if [ -f "build/app/outputs/bundle/release/app-release.aab" ]; then
+            cp build/app/outputs/bundle/release/app-release.aab release_outputs/Remaini-android-${VERSION_TAG}.aab
+          fi
 
           cp build/app/outputs/flutter-apk/app-release.apk release_outputs/Remaini-android-${VERSION_TAG}-universal.apk
 
