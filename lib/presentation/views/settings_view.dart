@@ -136,7 +136,8 @@ class SettingsView extends GetView<SettingsController> {
                           icon: CupertinoIcons.device_phone_portrait,
                           isSelected: currentMode == ThemeMode.system,
                           iconColor: AppColors.accentCyan,
-                          onTap: () => controller.setThemeMode(ThemeMode.system),
+                          onTap: () =>
+                              controller.setThemeMode(ThemeMode.system),
                         ),
                       ),
                       const SizedBox(width: 8),
@@ -215,6 +216,14 @@ class SettingsView extends GetView<SettingsController> {
                   title: 'Rate App',
                   subtitle: 'Leave a 5-star rating on Google Play',
                   onTap: controller.rateApp,
+                ),
+                const Divider(),
+                _SettingsTile(
+                  icon: CupertinoIcons.square_grid_2x2_fill,
+                  iconColor: const Color(0xFF6366F1),
+                  title: 'More Apps',
+                  subtitle: 'Discover more apps by Avenzor',
+                  onTap: controller.openMoreApps,
                 ),
                 const Divider(),
                 _SettingsTile(
@@ -393,17 +402,18 @@ class _ThemeChoiceCard extends StatelessWidget {
               title,
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
-              style: AppTypography.bodySmall(
-                context,
-                color: isSelected
-                    ? (isDark ? Colors.white : AppColors.primaryDark)
-                    : (isDark
-                          ? AppColors.darkTextSecondary
-                          : AppColors.lightTextSecondary),
-              ).copyWith(
-                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
-                fontSize: 12,
-              ),
+              style:
+                  AppTypography.bodySmall(
+                    context,
+                    color: isSelected
+                        ? (isDark ? Colors.white : AppColors.primaryDark)
+                        : (isDark
+                              ? AppColors.darkTextSecondary
+                              : AppColors.lightTextSecondary),
+                  ).copyWith(
+                    fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
+                    fontSize: 12,
+                  ),
             ),
           ],
         ),
@@ -467,10 +477,7 @@ class _SettingsTile extends StatelessWidget {
                       style: AppTypography.titleSmall(
                         context,
                         color: titleColor,
-                      ).copyWith(
-                        fontWeight: FontWeight.w600,
-                        fontSize: 14,
-                      ),
+                      ).copyWith(fontWeight: FontWeight.w600, fontSize: 14),
                     ),
                     if (subtitle != null) ...[
                       const SizedBox(height: 2),

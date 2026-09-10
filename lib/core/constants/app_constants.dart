@@ -7,6 +7,8 @@ class AppConstants {
   static const String applicationId = 'com.avenzor.remaini';
   static const String playStoreUrl =
       'https://play.google.com/store/apps/details?id=com.avenzor.remaini';
+  static const String developerProfileUrl =
+      'https://play.google.com/store/apps/dev?id=5809108425817759974';
   static const String githubRepoUrl = 'https://github.com/Dr-Usman/Remaini';
   static const String supportEmail = 'dr.usman7860@gmail.com';
 

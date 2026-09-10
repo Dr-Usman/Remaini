@@ -26,9 +26,7 @@ class HomeView extends GetView<EventListController> {
         child: Column(
           children: [
             // Branding & Spotlight Header
-            HomeHeader(
-              onAddEvent: controller.openAddEvent,
-            ),
+            HomeHeader(onAddEvent: controller.openAddEvent),
 
             // Search, Categories & Sorting
             const SearchFilterBar(),

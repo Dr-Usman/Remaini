@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_typography.dart';
 import '../../../core/utils/countdown_calculator.dart';
@@ -93,14 +94,18 @@ class HomeHeader extends StatelessWidget {
                         : AppColors.lightSurfaceElevated,
                     shape: BoxShape.circle,
                     border: Border.all(
-                      color: isDark ? AppColors.darkBorder : AppColors.lightBorder,
+                      color: isDark
+                          ? AppColors.darkBorder
+                          : AppColors.lightBorder,
                       width: 1,
                     ),
                   ),
                   child: Icon(
                     CupertinoIcons.gear_alt_fill,
                     size: 20,
-                    color: isDark ? AppColors.darkTextSecondary : AppColors.lightTextSecondary,
+                    color: isDark
+                        ? AppColors.darkTextSecondary
+                        : AppColors.lightTextSecondary,
                   ),
                 ),
               ),
@@ -174,10 +179,9 @@ class HomeHeader extends StatelessWidget {
                           nearest.title,
                           maxLines: 1,
                           overflow: TextOverflow.ellipsis,
-                          style: AppTypography.titleMedium(context).copyWith(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w700,
-                          ),
+                          style: AppTypography.titleMedium(
+                            context,
+                          ).copyWith(fontSize: 16, fontWeight: FontWeight.w700),
                         ),
                       ],
                     ),

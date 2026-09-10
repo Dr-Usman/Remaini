@@ -95,9 +95,7 @@ class EventDetailController extends GetxController {
 
   void togglePin() {
     final willBePinned = !currentEvent.value.isPinned;
-    final updated = currentEvent.value.copyWith(
-      isPinned: willBePinned,
-    );
+    final updated = currentEvent.value.copyWith(isPinned: willBePinned);
     currentEvent.value = updated;
     Get.find<EventListController>().updateEvent(updated);
     AppHaptics.selection();
@@ -106,7 +104,9 @@ class EventDetailController extends GetxController {
       messageText: Row(
         children: [
           Icon(
-            willBePinned ? CupertinoIcons.pin_fill : CupertinoIcons.pin_slash_fill,
+            willBePinned
+                ? CupertinoIcons.pin_fill
+                : CupertinoIcons.pin_slash_fill,
             color: Colors.white,
             size: 16,
           ),

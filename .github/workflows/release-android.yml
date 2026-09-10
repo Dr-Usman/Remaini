@@ -44,8 +44,9 @@ jobs:
       - name: 📦 Install Dependencies
         run: flutter pub get
 
-      - name: 🔍 Run Static Analysis & Tests
+      - name: 🔍 Run Format, Static Analysis & Tests
         run: |
+          dart format --output=none --set-exit-if-changed .
           flutter analyze
           flutter test
 

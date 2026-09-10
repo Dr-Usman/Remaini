@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_constants.dart';
 import '../../../core/constants/app_typography.dart';
@@ -58,16 +59,17 @@ class EventListController extends GetxController {
   List<CountdownEvent> get filteredEvents {
     final now = DateTime.now();
     List<CountdownEvent> list = allEvents.where((event) {
-      final matchesSearch = searchQuery.value.isEmpty ||
+      final matchesSearch =
+          searchQuery.value.isEmpty ||
           event.title.toLowerCase().contains(searchQuery.value.toLowerCase()) ||
           (event.notes != null &&
               event.notes!.toLowerCase().contains(
-                    searchQuery.value.toLowerCase(),
-                  ));
+                searchQuery.value.toLowerCase(),
+              ));
 
       final matchesCategory =
           selectedCategory.value == AppConstants.categoryAll ||
-              event.category.toLowerCase() == selectedCategory.value.toLowerCase();
+          event.category.toLowerCase() == selectedCategory.value.toLowerCase();
 
       return matchesSearch && matchesCategory;
     }).toList();
@@ -140,15 +142,23 @@ class EventListController extends GetxController {
       messageText: Row(
         children: [
           Icon(
-            willBePinned ? CupertinoIcons.pin_fill : CupertinoIcons.pin_slash_fill,
+            willBePinned
+                ? CupertinoIcons.pin_fill
+                : CupertinoIcons.pin_slash_fill,
             color: Colors.white,
             size: 16,
           ),
           const SizedBox(width: 10),
           Expanded(
             child: Text(
-              willBePinned ? 'Pinned "${event.title}" to top' : 'Unpinned "${event.title}"',
-              style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w600, fontSize: 13),
+              willBePinned
+                  ? 'Pinned "${event.title}" to top'
+                  : 'Unpinned "${event.title}"',
+              style: const TextStyle(
+                color: Colors.white,
+                fontWeight: FontWeight.w600,
+                fontSize: 13,
+              ),
               maxLines: 1,
               overflow: TextOverflow.ellipsis,
             ),
@@ -164,13 +174,18 @@ class EventListController extends GetxController {
     );
   }
 
-  Future<bool?> confirmDeleteEvent(BuildContext context, CountdownEvent event) async {
+  Future<bool?> confirmDeleteEvent(
+    BuildContext context,
+    CountdownEvent event,
+  ) async {
     AppHaptics.medium();
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return await Get.dialog<bool>(
       Dialog(
-        backgroundColor: isDark ? AppColors.darkSurfaceElevated : AppColors.lightSurface,
+        backgroundColor: isDark
+            ? AppColors.darkSurfaceElevated
+            : AppColors.lightSurface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
         child: Padding(
           padding: const EdgeInsets.all(24),

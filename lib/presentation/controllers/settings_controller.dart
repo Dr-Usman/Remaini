@@ -95,6 +95,16 @@ class SettingsController extends GetxController {
     } catch (_) {}
   }
 
+  Future<void> openMoreApps() async {
+    if (hapticsEnabled.value) AppHaptics.light();
+    final Uri url = Uri.parse(AppConstants.developerProfileUrl);
+    try {
+      if (await canLaunchUrl(url)) {
+        await launchUrl(url, mode: LaunchMode.externalApplication);
+      }
+    } catch (_) {}
+  }
+
   void contactSupport(BuildContext context) {
     if (hapticsEnabled.value) AppHaptics.light();
     _showContactOptionsDialog(context);
@@ -352,9 +362,8 @@ class SettingsController extends GetxController {
                   Expanded(
                     child: Text(
                       'Contact Developer',
-                      style: AppTypography.titleLarge(context).copyWith(
-                        fontSize: 18,
-                      ),
+                      style: AppTypography.titleLarge(context)
+                          .copyWith(fontSize: 18),
                     ),
                   ),
                 ],
@@ -466,7 +475,8 @@ class SettingsController extends GetxController {
     _showLegalSheet(
       context: context,
       title: 'Privacy Policy',
-      content: '''
+      content:
+          '''
 Last Updated: August 2026
 
 At Remaini, your privacy is our absolute priority.
