@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
-import 'package:in_app_review/in_app_review.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:share_plus/share_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -234,20 +233,24 @@ class SettingsController extends GetxController {
 
   Future<void> rateApp() async {
     if (hapticsEnabled.value) AppHaptics.medium();
-    final InAppReview inAppReview = InAppReview.instance;
+    final Uri marketUri = Uri.parse(
+      'market://details?id=${AppConstants.applicationId}',
+    );
+    final Uri webUri = Uri.parse(AppConstants.playStoreUrl);
 
     try {
-      // Directly open store listing for explicit rate app button
-      await inAppReview.openStoreListing(
-        appStoreId: AppConstants.applicationId,
-      );
+      if (await canLaunchUrl(marketUri)) {
+        await launchUrl(marketUri, mode: LaunchMode.externalApplication);
+      } else if (await canLaunchUrl(webUri)) {
+        await launchUrl(webUri, mode: LaunchMode.externalApplication);
+      }
     } catch (_) {
-      final Uri url = Uri.parse(AppConstants.playStoreUrl);
-      if (await canLaunchUrl(url)) {
-        await launchUrl(url, mode: LaunchMode.externalApplication);
+      if (await canLaunchUrl(webUri)) {
+        await launchUrl(webUri, mode: LaunchMode.externalApplication);
       }
     }
   }
+
 
   Future<void> openGitHub() async {
     if (hapticsEnabled.value) AppHaptics.light();

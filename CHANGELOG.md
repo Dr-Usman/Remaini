@@ -11,6 +11,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ---
 
+## [1.1.0] - 2026-10-02
+
+### Added
+- **Multi-Language Localization**: Full translation support across the application for 5 new languages: Spanish (Español), German (Deutsch), French (Français), Hindi (हिन्दी), and Bengali (বাংলা), alongside default English.
+- **In-App Language Switcher**: Added an interactive Language selector under Preferences in Settings with country flags and instant real-time UI switching.
+- **More Apps Discovery**: Added developer showcase tile in Settings linking directly to the Avenzor Google Play developer catalog.
+
+### Changed
+- **CI Workflows**: Upgraded GitHub Actions to latest runner actions (`checkout@v7`, `setup-java@v6`, `action-gh-release@v3`).
+- **UI Enhancements**: Wrapped settings dialog tiles in Material widgets for smoother ripple animations and strict framework assertion compliance.
+- **App Rating**: Replaced `in_app_review` with direct `url_launcher` store intents to eliminate KGP warnings and streamline native dependencies.
+
+---
+
 ## [1.0.1] - 2026-09-03
 
 ### Added
