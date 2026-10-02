@@ -251,7 +251,6 @@ class SettingsController extends GetxController {
     }
   }
 
-
   Future<void> openGitHub() async {
     if (hapticsEnabled.value) AppHaptics.light();
     final Uri url = Uri.parse(AppConstants.githubRepoUrl);

@@ -50,28 +50,36 @@ void main() {
       expect(settingsController.hapticsEnabled.value, true);
     });
 
-    test('Changing language updates selectedLanguageCode and currentLocale', () {
-      expect(settingsController.selectedLanguageCode.value, isNull);
-      expect(settingsController.currentLocale, isNull);
-      expect(settingsController.currentLanguageDisplayName, 'System Default');
+    test(
+      'Changing language updates selectedLanguageCode and currentLocale',
+      () {
+        expect(settingsController.selectedLanguageCode.value, isNull);
+        expect(settingsController.currentLocale, isNull);
+        expect(settingsController.currentLanguageDisplayName, 'System Default');
 
-      // Change to Spanish
-      settingsController.changeLanguage('es');
-      expect(settingsController.selectedLanguageCode.value, 'es');
-      expect(settingsController.currentLocale?.languageCode, 'es');
-      expect(settingsController.currentLanguageDisplayName, contains('Español'));
+        // Change to Spanish
+        settingsController.changeLanguage('es');
+        expect(settingsController.selectedLanguageCode.value, 'es');
+        expect(settingsController.currentLocale?.languageCode, 'es');
+        expect(
+          settingsController.currentLanguageDisplayName,
+          contains('Español'),
+        );
 
-      // Change to German
-      settingsController.changeLanguage('de');
-      expect(settingsController.selectedLanguageCode.value, 'de');
-      expect(settingsController.currentLocale?.languageCode, 'de');
-      expect(settingsController.currentLanguageDisplayName, contains('Deutsch'));
+        // Change to German
+        settingsController.changeLanguage('de');
+        expect(settingsController.selectedLanguageCode.value, 'de');
+        expect(settingsController.currentLocale?.languageCode, 'de');
+        expect(
+          settingsController.currentLanguageDisplayName,
+          contains('Deutsch'),
+        );
 
-      // Revert to system default
-      settingsController.changeLanguage(null);
-      expect(settingsController.selectedLanguageCode.value, isNull);
-      expect(settingsController.currentLocale, isNull);
-    });
+        // Revert to system default
+        settingsController.changeLanguage(null);
+        expect(settingsController.selectedLanguageCode.value, isNull);
+        expect(settingsController.currentLocale, isNull);
+      },
+    );
   });
-
 }

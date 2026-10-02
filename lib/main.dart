@@ -78,4 +78,3 @@ class RemainiApp extends StatelessWidget {
     });
   }
 }
-

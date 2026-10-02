@@ -43,17 +43,7 @@ class AppLanguage {
       nativeName: 'Français',
       flag: '🇫🇷',
     ),
-    AppLanguage(
-      code: 'hi',
-      name: 'Hindi',
-      nativeName: 'हिन्दी',
-      flag: '🇮🇳',
-    ),
-    AppLanguage(
-      code: 'bn',
-      name: 'Bengali',
-      nativeName: 'বাংলা',
-      flag: '🇧🇩',
-    ),
+    AppLanguage(code: 'hi', name: 'Hindi', nativeName: 'हिन्दी', flag: '🇮🇳'),
+    AppLanguage(code: 'bn', name: 'Bengali', nativeName: 'বাংলা', flag: '🇧🇩'),
   ];
 }

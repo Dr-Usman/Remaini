@@ -210,7 +210,8 @@ class SettingsView extends GetView<SettingsController> {
                   icon: CupertinoIcons.waveform,
                   iconColor: AppColors.accentCyan,
                   title: l10n?.hapticFeedback ?? 'Haptic Feedback',
-                  subtitle: l10n?.hapticSubtitle ??
+                  subtitle:
+                      l10n?.hapticSubtitle ??
                       'Vibrate on button presses & milestones',
                   trailing: Obx(
                     () => CupertinoSwitch(
@@ -226,7 +227,9 @@ class SettingsView extends GetView<SettingsController> {
           const SizedBox(height: 24),
 
           // --- Community & Growth ---
-          _SectionTitle(title: l10n?.communityAndSupport ?? 'COMMUNITY & SUPPORT'),
+          _SectionTitle(
+            title: l10n?.communityAndSupport ?? 'COMMUNITY & SUPPORT',
+          ),
 
           const SizedBox(height: 10),
           GlassContainer(
@@ -238,7 +241,8 @@ class SettingsView extends GetView<SettingsController> {
                   icon: CupertinoIcons.share,
                   iconColor: AppColors.primaryLight,
                   title: l10n?.shareRemaini ?? 'Share Remaini',
-                  subtitle: l10n?.shareSubtitle ?? 'Tell your friends and family',
+                  subtitle:
+                      l10n?.shareSubtitle ?? 'Tell your friends and family',
                   onTap: controller.shareApp,
                 ),
                 const Divider(),
@@ -246,7 +250,9 @@ class SettingsView extends GetView<SettingsController> {
                   icon: CupertinoIcons.star_fill,
                   iconColor: const Color(0xFFF59E0B),
                   title: l10n?.rateApp ?? 'Rate App',
-                  subtitle: l10n?.rateSubtitle ?? 'Leave a 5-star rating on Google Play',
+                  subtitle:
+                      l10n?.rateSubtitle ??
+                      'Leave a 5-star rating on Google Play',
                   onTap: controller.rateApp,
                 ),
                 const Divider(),
@@ -254,7 +260,8 @@ class SettingsView extends GetView<SettingsController> {
                   icon: CupertinoIcons.square_grid_2x2_fill,
                   iconColor: const Color(0xFF6366F1),
                   title: l10n?.moreApps ?? 'More Apps',
-                  subtitle: l10n?.moreAppsSubtitle ?? 'Discover more apps by Avenzor',
+                  subtitle:
+                      l10n?.moreAppsSubtitle ?? 'Discover more apps by Avenzor',
                   onTap: controller.openMoreApps,
                 ),
                 const Divider(),
@@ -262,7 +269,9 @@ class SettingsView extends GetView<SettingsController> {
                   icon: CupertinoIcons.chevron_left_slash_chevron_right,
                   iconColor: const Color(0xFF8B5CF6),
                   title: l10n?.sourceCode ?? 'Source Code',
-                  subtitle: l10n?.sourceCodeSubtitle ?? 'View repository & star on GitHub',
+                  subtitle:
+                      l10n?.sourceCodeSubtitle ??
+                      'View repository & star on GitHub',
                   onTap: controller.openGitHub,
                 ),
                 const Divider(),
@@ -270,7 +279,9 @@ class SettingsView extends GetView<SettingsController> {
                   icon: CupertinoIcons.mail_solid,
                   iconColor: const Color(0xFF10B981),
                   title: l10n?.contactUs ?? 'Contact Us',
-                  subtitle: l10n?.contactSubtitle ?? 'Get in touch, suggest features, or report bugs',
+                  subtitle:
+                      l10n?.contactSubtitle ??
+                      'Get in touch, suggest features, or report bugs',
                   onTap: () => controller.contactSupport(context),
                 ),
               ],
@@ -290,7 +301,9 @@ class SettingsView extends GetView<SettingsController> {
                   icon: CupertinoIcons.sparkles,
                   iconColor: AppColors.accentViolet,
                   title: l10n?.resetSampleData ?? 'Load Sample Countdowns',
-                  subtitle: l10n?.resetSampleDataSubtitle ?? 'Seed initial example events',
+                  subtitle:
+                      l10n?.resetSampleDataSubtitle ??
+                      'Seed initial example events',
                   onTap: () => controller.seedSampleData(context),
                 ),
                 const Divider(),
