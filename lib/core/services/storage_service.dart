@@ -67,6 +67,10 @@ class StorageService {
     await _settingsBox.put(key, value);
   }
 
+  Future<void> removeSetting(String key) async {
+    await _settingsBox.delete(key);
+  }
+
   // --- Initial Sample Seed Data ---
 
   Future<void> seedInitialDataIfFirstLaunch() async {

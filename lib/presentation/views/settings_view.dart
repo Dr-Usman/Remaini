@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../core/constants/app_colors.dart';
 import '../../../core/constants/app_typography.dart';
 import '../../../core/utils/haptic_feedback.dart';
+import '../../l10n/app_localizations.dart';
 import '../controllers/settings_controller.dart';
 import '../widgets/common/glass_container.dart';
 
@@ -15,6 +16,7 @@ class SettingsView extends GetView<SettingsController> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context);
 
     return Scaffold(
       appBar: AppBar(
@@ -23,7 +25,7 @@ class SettingsView extends GetView<SettingsController> {
           onPressed: () => Get.back(),
         ),
         title: Text(
-          'Settings & About',
+          l10n?.settingsAndAbout ?? 'Settings & About',
           style: AppTypography.titleLarge(context),
         ),
       ),
@@ -99,7 +101,7 @@ class SettingsView extends GetView<SettingsController> {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'Count every moment that matters',
+                        l10n?.appTagline ?? 'Count every moment that matters',
                         style: AppTypography.bodySmall(context),
                       ),
                     ],
@@ -111,7 +113,7 @@ class SettingsView extends GetView<SettingsController> {
           const SizedBox(height: 24),
 
           // --- Appearance Section ---
-          _SectionTitle(title: 'APPEARANCE'),
+          _SectionTitle(title: l10n?.appearance ?? 'APPEARANCE'),
           const SizedBox(height: 10),
           GlassContainer(
             padding: const EdgeInsets.all(16),
@@ -120,7 +122,7 @@ class SettingsView extends GetView<SettingsController> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'Theme Mode',
+                  l10n?.themeMode ?? 'Theme Mode',
                   style: AppTypography.titleSmall(context)
                       .copyWith(fontWeight: FontWeight.w700),
                 ),
@@ -132,7 +134,7 @@ class SettingsView extends GetView<SettingsController> {
                     children: [
                       Expanded(
                         child: _ThemeChoiceCard(
-                          title: 'System',
+                          title: l10n?.system ?? 'System',
                           icon: CupertinoIcons.device_phone_portrait,
                           isSelected: currentMode == ThemeMode.system,
                           iconColor: AppColors.accentCyan,
@@ -143,7 +145,7 @@ class SettingsView extends GetView<SettingsController> {
                       const SizedBox(width: 8),
                       Expanded(
                         child: _ThemeChoiceCard(
-                          title: 'Dark',
+                          title: l10n?.dark ?? 'Dark',
                           icon: CupertinoIcons.moon_fill,
                           isSelected: currentMode == ThemeMode.dark,
                           iconColor: const Color(0xFF818CF8),
@@ -153,7 +155,7 @@ class SettingsView extends GetView<SettingsController> {
                       const SizedBox(width: 8),
                       Expanded(
                         child: _ThemeChoiceCard(
-                          title: 'Light',
+                          title: l10n?.light ?? 'Light',
                           icon: CupertinoIcons.sun_max_fill,
                           isSelected: currentMode == ThemeMode.light,
                           iconColor: const Color(0xFFF59E0B),
@@ -169,7 +171,7 @@ class SettingsView extends GetView<SettingsController> {
           const SizedBox(height: 24),
 
           // --- Preferences Section ---
-          _SectionTitle(title: 'PREFERENCES'),
+          _SectionTitle(title: l10n?.preferences ?? 'PREFERENCES'),
           const SizedBox(height: 10),
           GlassContainer(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -177,10 +179,39 @@ class SettingsView extends GetView<SettingsController> {
             child: Column(
               children: [
                 _SettingsTile(
+                  icon: CupertinoIcons.globe,
+                  iconColor: const Color(0xFF38BDF8),
+                  title: l10n?.language ?? 'Language',
+                  subtitle: l10n?.selectLanguage ?? 'Choose your language',
+                  trailing: Obx(
+                    () => Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Text(
+                          controller.currentLanguageDisplayName,
+                          style: AppTypography.bodySmall(
+                            context,
+                            color: AppColors.primaryLight,
+                          ).copyWith(fontWeight: FontWeight.w600),
+                        ),
+                        const SizedBox(width: 4),
+                        const Icon(
+                          CupertinoIcons.chevron_forward,
+                          size: 16,
+                          color: AppColors.darkTextTertiary,
+                        ),
+                      ],
+                    ),
+                  ),
+                  onTap: () => controller.showLanguageSelectionDialog(context),
+                ),
+                const Divider(),
+                _SettingsTile(
                   icon: CupertinoIcons.waveform,
                   iconColor: AppColors.accentCyan,
-                  title: 'Haptic Feedback',
-                  subtitle: 'Vibrate on button presses & milestones',
+                  title: l10n?.hapticFeedback ?? 'Haptic Feedback',
+                  subtitle: l10n?.hapticSubtitle ??
+                      'Vibrate on button presses & milestones',
                   trailing: Obx(
                     () => CupertinoSwitch(
                       value: controller.hapticsEnabled.value,
@@ -195,7 +226,8 @@ class SettingsView extends GetView<SettingsController> {
           const SizedBox(height: 24),
 
           // --- Community & Growth ---
-          _SectionTitle(title: 'COMMUNITY & SUPPORT'),
+          _SectionTitle(title: l10n?.communityAndSupport ?? 'COMMUNITY & SUPPORT'),
+
           const SizedBox(height: 10),
           GlassContainer(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -205,40 +237,40 @@ class SettingsView extends GetView<SettingsController> {
                 _SettingsTile(
                   icon: CupertinoIcons.share,
                   iconColor: AppColors.primaryLight,
-                  title: 'Share Remaini',
-                  subtitle: 'Tell your friends and family',
+                  title: l10n?.shareRemaini ?? 'Share Remaini',
+                  subtitle: l10n?.shareSubtitle ?? 'Tell your friends and family',
                   onTap: controller.shareApp,
                 ),
                 const Divider(),
                 _SettingsTile(
                   icon: CupertinoIcons.star_fill,
                   iconColor: const Color(0xFFF59E0B),
-                  title: 'Rate App',
-                  subtitle: 'Leave a 5-star rating on Google Play',
+                  title: l10n?.rateApp ?? 'Rate App',
+                  subtitle: l10n?.rateSubtitle ?? 'Leave a 5-star rating on Google Play',
                   onTap: controller.rateApp,
                 ),
                 const Divider(),
                 _SettingsTile(
                   icon: CupertinoIcons.square_grid_2x2_fill,
                   iconColor: const Color(0xFF6366F1),
-                  title: 'More Apps',
-                  subtitle: 'Discover more apps by Avenzor',
+                  title: l10n?.moreApps ?? 'More Apps',
+                  subtitle: l10n?.moreAppsSubtitle ?? 'Discover more apps by Avenzor',
                   onTap: controller.openMoreApps,
                 ),
                 const Divider(),
                 _SettingsTile(
                   icon: CupertinoIcons.chevron_left_slash_chevron_right,
                   iconColor: const Color(0xFF8B5CF6),
-                  title: 'Source Code',
-                  subtitle: 'View repository & star on GitHub',
+                  title: l10n?.sourceCode ?? 'Source Code',
+                  subtitle: l10n?.sourceCodeSubtitle ?? 'View repository & star on GitHub',
                   onTap: controller.openGitHub,
                 ),
                 const Divider(),
                 _SettingsTile(
                   icon: CupertinoIcons.mail_solid,
                   iconColor: const Color(0xFF10B981),
-                  title: 'Contact Us',
-                  subtitle: 'Get in touch, suggest features, or report bugs',
+                  title: l10n?.contactUs ?? 'Contact Us',
+                  subtitle: l10n?.contactSubtitle ?? 'Get in touch, suggest features, or report bugs',
                   onTap: () => controller.contactSupport(context),
                 ),
               ],
@@ -247,7 +279,7 @@ class SettingsView extends GetView<SettingsController> {
           const SizedBox(height: 24),
 
           // --- Data Management ---
-          _SectionTitle(title: 'DATA MANAGEMENT'),
+          _SectionTitle(title: l10n?.sampleDataLoader ?? 'DATA MANAGEMENT'),
           const SizedBox(height: 10),
           GlassContainer(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -257,8 +289,8 @@ class SettingsView extends GetView<SettingsController> {
                 _SettingsTile(
                   icon: CupertinoIcons.sparkles,
                   iconColor: AppColors.accentViolet,
-                  title: 'Load Sample Countdowns',
-                  subtitle: 'Seed initial example events',
+                  title: l10n?.resetSampleData ?? 'Load Sample Countdowns',
+                  subtitle: l10n?.resetSampleDataSubtitle ?? 'Seed initial example events',
                   onTap: () => controller.seedSampleData(context),
                 ),
                 const Divider(),
@@ -276,7 +308,7 @@ class SettingsView extends GetView<SettingsController> {
           const SizedBox(height: 24),
 
           // --- Legal & Info ---
-          _SectionTitle(title: 'LEGAL & PRIVACY'),
+          _SectionTitle(title: l10n?.aboutAndLegal ?? 'LEGAL & PRIVACY'),
           const SizedBox(height: 10),
           GlassContainer(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -286,7 +318,7 @@ class SettingsView extends GetView<SettingsController> {
                 _SettingsTile(
                   icon: CupertinoIcons.shield_fill,
                   iconColor: AppColors.accentCyan,
-                  title: 'Privacy Policy',
+                  title: l10n?.privacyPolicy ?? 'Privacy Policy',
                   subtitle: '100% offline, zero data tracking',
                   onTap: () => controller.showPrivacyPolicy(context),
                 ),
@@ -294,13 +326,14 @@ class SettingsView extends GetView<SettingsController> {
                 _SettingsTile(
                   icon: CupertinoIcons.doc_text_fill,
                   iconColor: AppColors.primaryLight,
-                  title: 'Terms of Use',
+                  title: l10n?.termsOfService ?? 'Terms of Use',
                   subtitle: 'Terms and licensing conditions',
                   onTap: () => controller.showTermsOfUse(context),
                 ),
               ],
             ),
           ),
+
           const SizedBox(height: 32),
 
           // Footer

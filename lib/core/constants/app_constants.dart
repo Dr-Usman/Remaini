@@ -20,6 +20,7 @@ class AppConstants {
   static const String keyIsDarkMode = 'is_dark_mode';
   static const String keySortOption = 'sort_option';
   static const String keyHasSeededInitialData = 'has_seeded_initial_data';
+  static const String keyLanguageCode = 'language_code';
 
   // Default Categories
   static const String categoryAll = 'All';

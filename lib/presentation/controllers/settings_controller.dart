@@ -13,6 +13,8 @@ import '../../../core/constants/app_typography.dart';
 import '../../../core/services/storage_service.dart';
 import '../../../core/theme/theme_controller.dart';
 import '../../../core/utils/haptic_feedback.dart';
+import '../../data/models/app_language.dart';
+import '../../l10n/app_localizations.dart';
 import 'event_list_controller.dart';
 
 /// Controller managing app settings, theme modes, haptics, legal modals, and community actions.
@@ -23,6 +25,21 @@ class SettingsController extends GetxController {
   final RxBool hapticsEnabled = true.obs;
   final RxString appVersion = '1.0.0'.obs;
   final RxString buildNumber = '1'.obs;
+  final RxnString selectedLanguageCode = RxnString(null);
+
+  Locale? get currentLocale => selectedLanguageCode.value != null
+      ? Locale(selectedLanguageCode.value!)
+      : null;
+
+  String get currentLanguageDisplayName {
+    final code = selectedLanguageCode.value;
+    if (code == null) return 'System Default';
+    final match = AppLanguage.supportedLanguages.firstWhere(
+      (lang) => lang.code == code,
+      orElse: () => AppLanguage.supportedLanguages.first,
+    );
+    return '${match.flag} ${match.nativeName}';
+  }
 
   @override
   void onInit() {
@@ -36,6 +53,11 @@ class SettingsController extends GetxController {
       'haptics_enabled',
       defaultValue: true,
     );
+    final savedLang = _storageService.getSetting<String?>(
+      AppConstants.keyLanguageCode,
+      defaultValue: null,
+    );
+    selectedLanguageCode.value = savedLang;
   }
 
   Future<void> _loadAppInfo() async {
@@ -55,6 +77,148 @@ class SettingsController extends GetxController {
     hapticsEnabled.value = !hapticsEnabled.value;
     _storageService.saveSetting('haptics_enabled', hapticsEnabled.value);
     if (hapticsEnabled.value) AppHaptics.medium();
+  }
+
+  void changeLanguage(String? code) {
+    if (hapticsEnabled.value) AppHaptics.selection();
+    selectedLanguageCode.value = code;
+    if (code == null) {
+      _storageService.removeSetting(AppConstants.keyLanguageCode);
+      final deviceLocale = Get.deviceLocale ?? const Locale('en');
+      if (Get.context != null) {
+        Get.updateLocale(deviceLocale);
+      }
+    } else {
+      _storageService.saveSetting<String?>(AppConstants.keyLanguageCode, code);
+      if (Get.context != null) {
+        Get.updateLocale(Locale(code));
+      }
+    }
+  }
+
+  void showLanguageSelectionDialog(BuildContext context) {
+    if (hapticsEnabled.value) AppHaptics.light();
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final l10n = AppLocalizations.of(context);
+
+    Get.dialog(
+      Dialog(
+        backgroundColor: isDark
+            ? AppColors.darkSurfaceElevated
+            : AppColors.lightSurface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(24)),
+        child: Padding(
+          padding: const EdgeInsets.all(22),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    decoration: BoxDecoration(
+                      color: AppColors.primary.withValues(alpha: 0.15),
+                      shape: BoxShape.circle,
+                    ),
+                    child: const Icon(
+                      CupertinoIcons.globe,
+                      color: AppColors.primaryLight,
+                      size: 20,
+                    ),
+                  ),
+                  const SizedBox(width: 12),
+                  Text(
+                    l10n?.selectLanguage ?? 'Select Language',
+                    style: AppTypography.titleLarge(context)
+                        .copyWith(fontSize: 18),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 16),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: MediaQuery.sizeOf(context).height * 0.5,
+                ),
+                child: SingleChildScrollView(
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: AppLanguage.supportedLanguages.map((lang) {
+                      return Obx(() {
+                        final isSelected =
+                            selectedLanguageCode.value == lang.code;
+                        return Container(
+                          margin: const EdgeInsets.only(bottom: 8),
+                          child: Material(
+                            color: isSelected
+                                ? AppColors.primary.withValues(alpha: 0.12)
+                                : (isDark
+                                      ? Colors.white.withValues(alpha: 0.04)
+                                      : Colors.black.withValues(alpha: 0.03)),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(14),
+                              side: BorderSide(
+                                color: isSelected
+                                    ? AppColors.primary
+                                    : Colors.transparent,
+                                width: 1.5,
+                              ),
+                            ),
+                            clipBehavior: Clip.antiAlias,
+                            child: ListTile(
+                              contentPadding: const EdgeInsets.symmetric(
+                                horizontal: 16,
+                                vertical: 2,
+                              ),
+                              leading: Text(
+                                lang.flag,
+                                style: const TextStyle(fontSize: 24),
+                              ),
+                              title: Text(
+                                lang.nativeName,
+                                style: AppTypography.bodyMedium(context)
+                                    .copyWith(
+                                      fontWeight: isSelected
+                                          ? FontWeight.w700
+                                          : FontWeight.w500,
+                                      color: isSelected
+                                          ? AppColors.primary
+                                          : null,
+                                    ),
+                              ),
+                              subtitle: lang.code != null
+                                  ? Text(
+                                      lang.name,
+                                      style: AppTypography.bodySmall(context),
+                                    )
+                                  : Text(
+                                      l10n?.systemDefault ?? 'System Default',
+                                      style: AppTypography.bodySmall(context),
+                                    ),
+                              trailing: isSelected
+                                  ? const Icon(
+                                      CupertinoIcons.checkmark_circle_fill,
+                                      color: AppColors.primary,
+                                      size: 22,
+                                    )
+                                  : null,
+                              onTap: () {
+                                changeLanguage(lang.code);
+                                Get.back();
+                              },
+                            ),
+                          ),
+                        );
+                      });
+                    }).toList(),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   Future<void> shareApp() async {

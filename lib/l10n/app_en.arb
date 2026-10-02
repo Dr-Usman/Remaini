@@ -1,0 +1,491 @@
+{
+  "@@locale": "en",
+  "appName": "Remaini",
+  "@appName": {
+    "description": "The name of the application"
+  },
+  "appTagline": "Count every moment that matters",
+  "@appTagline": {
+    "description": "Application tagline"
+  },
+  "nextUp": "NEXT UP",
+  "@nextUp": {
+    "description": "Header for nearest event spotlight"
+  },
+  "noUpcomingEvents": "No upcoming events",
+  "@noUpcomingEvents": {
+    "description": "Text when there are no events in spotlight"
+  },
+  "tapPlusToCreate": "Tap + to create your first countdown",
+  "@tapPlusToCreate": {
+    "description": "Hint to create first countdown"
+  },
+  "searchHint": "Search countdowns...",
+  "@searchHint": {
+    "description": "Search input placeholder"
+  },
+  "categoryAll": "All",
+  "@categoryAll": {
+    "description": "Category filter: All"
+  },
+  "categoryPersonal": "Personal",
+  "@categoryPersonal": {
+    "description": "Category filter: Personal"
+  },
+  "categoryWork": "Work",
+  "@categoryWork": {
+    "description": "Category filter: Work"
+  },
+  "categoryBirthday": "Birthday",
+  "@categoryBirthday": {
+    "description": "Category filter: Birthday"
+  },
+  "categoryHoliday": "Holiday",
+  "@categoryHoliday": {
+    "description": "Category filter: Holiday"
+  },
+  "categoryTravel": "Travel",
+  "@categoryTravel": {
+    "description": "Category filter: Travel"
+  },
+  "categoryMilestone": "Milestone",
+  "@categoryMilestone": {
+    "description": "Category filter: Milestone"
+  },
+  "categoryAnniversary": "Anniversary",
+  "@categoryAnniversary": {
+    "description": "Category filter: Anniversary"
+  },
+  "sortNearest": "Nearest First",
+  "@sortNearest": {
+    "description": "Sort option: Nearest First"
+  },
+  "sortFurthest": "Furthest First",
+  "@sortFurthest": {
+    "description": "Sort option: Furthest First"
+  },
+  "sortTitleAz": "Title (A-Z)",
+  "@sortTitleAz": {
+    "description": "Sort option: Title (A-Z)"
+  },
+  "sortDateCreated": "Date Added",
+  "@sortDateCreated": {
+    "description": "Sort option: Date Added"
+  },
+  "noMatchingCountdowns": "No matching countdowns",
+  "@noMatchingCountdowns": {
+    "description": "Empty state title when search has no results"
+  },
+  "adjustSearchOrFilter": "Try adjusting your search query or category filter.",
+  "@adjustSearchOrFilter": {
+    "description": "Empty state subtitle for search"
+  },
+  "urgencyFarAway": "Far Away",
+  "@urgencyFarAway": {
+    "description": "Urgency badge: Far Away"
+  },
+  "urgencyApproaching": "Approaching",
+  "@urgencyApproaching": {
+    "description": "Urgency badge: Approaching"
+  },
+  "urgencySoon": "Soon",
+  "@urgencySoon": {
+    "description": "Urgency badge: Soon"
+  },
+  "urgencyToday": "Today",
+  "@urgencyToday": {
+    "description": "Urgency badge: Today"
+  },
+  "urgencyCompleted": "Completed",
+  "@urgencyCompleted": {
+    "description": "Urgency badge: Completed"
+  },
+  "urgencyOverdue": "Overdue",
+  "@urgencyOverdue": {
+    "description": "Urgency badge: Overdue"
+  },
+  "unitYears": "Years",
+  "@unitYears": {
+    "description": "Calendar unit: Years"
+  },
+  "unitMonths": "Months",
+  "@unitMonths": {
+    "description": "Calendar unit: Months"
+  },
+  "unitWeeks": "Weeks",
+  "@unitWeeks": {
+    "description": "Calendar unit: Weeks"
+  },
+  "unitDays": "Days",
+  "@unitDays": {
+    "description": "Calendar unit: Days"
+  },
+  "unitHours": "Hours",
+  "@unitHours": {
+    "description": "Calendar unit: Hours"
+  },
+  "unitMinutes": "Minutes",
+  "@unitMinutes": {
+    "description": "Calendar unit: Minutes"
+  },
+  "unitSeconds": "Seconds",
+  "@unitSeconds": {
+    "description": "Calendar unit: Seconds"
+  },
+  "shortDays": "Days",
+  "@shortDays": {
+    "description": "Short label: Days"
+  },
+  "shortHours": "Hours",
+  "@shortHours": {
+    "description": "Short label: Hours"
+  },
+  "shortMins": "Mins",
+  "@shortMins": {
+    "description": "Short label: Mins"
+  },
+  "shortSecs": "Secs",
+  "@shortSecs": {
+    "description": "Short label: Secs"
+  },
+  "totalYears": "Total Years",
+  "@totalYears": {
+    "description": "Precision unit: Total Years"
+  },
+  "totalMonths": "Total Months",
+  "@totalMonths": {
+    "description": "Precision unit: Total Months"
+  },
+  "totalWeeks": "Total Weeks",
+  "@totalWeeks": {
+    "description": "Precision unit: Total Weeks"
+  },
+  "totalDays": "Total Days",
+  "@totalDays": {
+    "description": "Precision unit: Total Days"
+  },
+  "totalHours": "Total Hours",
+  "@totalHours": {
+    "description": "Precision unit: Total Hours"
+  },
+  "totalMinutes": "Total Minutes",
+  "@totalMinutes": {
+    "description": "Precision unit: Total Minutes"
+  },
+  "totalSeconds": "Total Seconds",
+  "@totalSeconds": {
+    "description": "Precision unit: Total Seconds"
+  },
+  "calendarUnits": "Calendar Units",
+  "@calendarUnits": {
+    "description": "Detail view tab: Calendar Units"
+  },
+  "totalPrecision": "Total Precision",
+  "@totalPrecision": {
+    "description": "Detail view tab: Total Precision"
+  },
+  "milestoneReached": "Milestone Reached! 🎉",
+  "@milestoneReached": {
+    "description": "Header when countdown completes"
+  },
+  "theMomentHasArrived": "The moment has arrived!",
+  "@theMomentHasArrived": {
+    "description": "Subtitle when countdown reaches zero"
+  },
+  "shareCountdown": "Share Countdown",
+  "@shareCountdown": {
+    "description": "Action to share countdown"
+  },
+  "editEvent": "Edit Event",
+  "@editEvent": {
+    "description": "Action to edit countdown"
+  },
+  "deleteEvent": "Delete Event",
+  "@deleteEvent": {
+    "description": "Action to delete event"
+  },
+  "deleteEventConfirm": "Are you sure you want to delete \"{title}\"?",
+  "@deleteEventConfirm": {
+    "description": "Confirmation message for deleting an event",
+    "placeholders": {
+      "title": {
+        "type": "String",
+        "example": "Tokyo Trip"
+      }
+    }
+  },
+  "delete": "Delete",
+  "@delete": {
+    "description": "Button: Delete"
+  },
+  "cancel": "Cancel",
+  "@cancel": {
+    "description": "Button: Cancel"
+  },
+  "pinned": "Pinned",
+  "@pinned": {
+    "description": "Badge: Pinned"
+  },
+  "unpinned": "Unpinned",
+  "@unpinned": {
+    "description": "Badge: Unpinned"
+  },
+  "pinEvent": "Pin Event",
+  "@pinEvent": {
+    "description": "Action to pin event"
+  },
+  "unpinEvent": "Unpin Event",
+  "@unpinEvent": {
+    "description": "Action to unpin event"
+  },
+  "eventDeleted": "Event deleted",
+  "@eventDeleted": {
+    "description": "Snackbar message when event is deleted"
+  },
+  "undo": "Undo",
+  "@undo": {
+    "description": "Action to undo deletion"
+  },
+  "newCountdown": "New Countdown",
+  "@newCountdown": {
+    "description": "Title for creating new countdown"
+  },
+  "editCountdown": "Edit Countdown",
+  "@editCountdown": {
+    "description": "Title for editing countdown"
+  },
+  "eventTitle": "Event Title",
+  "@eventTitle": {
+    "description": "Label for title input"
+  },
+  "titlePlaceholder": "e.g., Summer Trip to Kyoto",
+  "@titlePlaceholder": {
+    "description": "Placeholder for event title"
+  },
+  "selectDateTime": "Date & Time",
+  "@selectDateTime": {
+    "description": "Label for date and time picker"
+  },
+  "quickDatePresets": "Quick Date Presets",
+  "@quickDatePresets": {
+    "description": "Header for quick date chips"
+  },
+  "presetTomorrow": "Tomorrow",
+  "@presetTomorrow": {
+    "description": "Quick preset: Tomorrow"
+  },
+  "presetThisWeekend": "This Weekend",
+  "@presetThisWeekend": {
+    "description": "Quick preset: This Weekend"
+  },
+  "presetOneWeek": "+1 Week",
+  "@presetOneWeek": {
+    "description": "Quick preset: +1 Week"
+  },
+  "presetOneMonth": "+1 Month",
+  "@presetOneMonth": {
+    "description": "Quick preset: +1 Month"
+  },
+  "presetNewYear": "New Year",
+  "@presetNewYear": {
+    "description": "Quick preset: New Year"
+  },
+  "quickTimePresets": "Quick Time Presets",
+  "@quickTimePresets": {
+    "description": "Header for quick time chips"
+  },
+  "presetMorning": "9:00 AM",
+  "@presetMorning": {
+    "description": "Time preset 9 AM"
+  },
+  "presetNoon": "12:00 PM",
+  "@presetNoon": {
+    "description": "Time preset 12 PM"
+  },
+  "presetEvening": "6:00 PM",
+  "@presetEvening": {
+    "description": "Time preset 6 PM"
+  },
+  "presetMidnight": "Midnight",
+  "@presetMidnight": {
+    "description": "Time preset Midnight"
+  },
+  "category": "Category",
+  "@category": {
+    "description": "Label for category selector"
+  },
+  "colorAndIcon": "Color & Icon",
+  "@colorAndIcon": {
+    "description": "Label for color and icon customizer"
+  },
+  "notesOptional": "Notes (Optional)",
+  "@notesOptional": {
+    "description": "Label for notes field"
+  },
+  "notesPlaceholder": "Add any details, flight numbers, or memories...",
+  "@notesPlaceholder": {
+    "description": "Placeholder for notes"
+  },
+  "pinToTop": "Pin to top of list",
+  "@pinToTop": {
+    "description": "Toggle to pin event"
+  },
+  "saveCountdown": "Save Countdown",
+  "@saveCountdown": {
+    "description": "Button to save new countdown"
+  },
+  "updateCountdown": "Update Countdown",
+  "@updateCountdown": {
+    "description": "Button to update countdown"
+  },
+  "titleRequiredError": "Please enter an event title",
+  "@titleRequiredError": {
+    "description": "Validation error for missing title"
+  },
+  "emptyTitle": "No Countdowns Yet",
+  "@emptyTitle": {
+    "description": "Empty state headline"
+  },
+  "emptySubtitle": "Create your first countdown to track birthdays, vacations, milestones, and goals.",
+  "@emptySubtitle": {
+    "description": "Empty state description"
+  },
+  "createCountdown": "Create Countdown",
+  "@createCountdown": {
+    "description": "Empty state call to action"
+  },
+  "settingsAndAbout": "Settings & About",
+  "@settingsAndAbout": {
+    "description": "Title of settings screen"
+  },
+  "appearance": "APPEARANCE",
+  "@appearance": {
+    "description": "Section header: Appearance"
+  },
+  "themeMode": "Theme Mode",
+  "@themeMode": {
+    "description": "Theme mode selector title"
+  },
+  "system": "System",
+  "@system": {
+    "description": "System theme mode"
+  },
+  "dark": "Dark",
+  "@dark": {
+    "description": "Dark theme mode"
+  },
+  "light": "Light",
+  "@light": {
+    "description": "Light theme mode"
+  },
+  "preferences": "PREFERENCES",
+  "@preferences": {
+    "description": "Section header: Preferences"
+  },
+  "language": "Language",
+  "@language": {
+    "description": "Language selector title"
+  },
+  "selectLanguage": "Select Language",
+  "@selectLanguage": {
+    "description": "Title of language picker modal"
+  },
+  "systemDefault": "System Default",
+  "@systemDefault": {
+    "description": "System default language option"
+  },
+  "hapticFeedback": "Haptic Feedback",
+  "@hapticFeedback": {
+    "description": "Haptic feedback setting title"
+  },
+  "hapticSubtitle": "Vibrate on button presses & milestones",
+  "@hapticSubtitle": {
+    "description": "Haptic feedback setting subtitle"
+  },
+  "communityAndSupport": "COMMUNITY & SUPPORT",
+  "@communityAndSupport": {
+    "description": "Section header: Community & Support"
+  },
+  "shareRemaini": "Share Remaini",
+  "@shareRemaini": {
+    "description": "Share app tile title"
+  },
+  "shareSubtitle": "Tell your friends and family",
+  "@shareSubtitle": {
+    "description": "Share app tile subtitle"
+  },
+  "rateApp": "Rate App",
+  "@rateApp": {
+    "description": "Rate app tile title"
+  },
+  "rateSubtitle": "Leave a 5-star rating on Google Play",
+  "@rateSubtitle": {
+    "description": "Rate app tile subtitle"
+  },
+  "moreApps": "More Apps",
+  "@moreApps": {
+    "description": "More apps tile title"
+  },
+  "moreAppsSubtitle": "Discover more apps by Avenzor",
+  "@moreAppsSubtitle": {
+    "description": "More apps tile subtitle"
+  },
+  "sourceCode": "Source Code",
+  "@sourceCode": {
+    "description": "Source code tile title"
+  },
+  "sourceCodeSubtitle": "View repository & star on GitHub",
+  "@sourceCodeSubtitle": {
+    "description": "Source code tile subtitle"
+  },
+  "contactUs": "Contact Us",
+  "@contactUs": {
+    "description": "Contact us tile title"
+  },
+  "contactSubtitle": "Reach out for support or feedback",
+  "@contactSubtitle": {
+    "description": "Contact us tile subtitle"
+  },
+  "aboutAndLegal": "ABOUT & LEGAL",
+  "@aboutAndLegal": {
+    "description": "Section header: About & Legal"
+  },
+  "privacyPolicy": "Privacy Policy",
+  "@privacyPolicy": {
+    "description": "Privacy policy tile title"
+  },
+  "termsOfService": "Terms of Service",
+  "@termsOfService": {
+    "description": "Terms of service tile title"
+  },
+  "openSourceLicenses": "Open Source Licenses",
+  "@openSourceLicenses": {
+    "description": "Open source licenses tile title"
+  },
+  "sampleDataLoader": "SAMPLE DATA & STORAGE",
+  "@sampleDataLoader": {
+    "description": "Section header: Sample Data & Storage"
+  },
+  "resetSampleData": "Reset Sample Data",
+  "@resetSampleData": {
+    "description": "Reset sample data tile title"
+  },
+  "resetSampleDataSubtitle": "Reload default sample countdowns",
+  "@resetSampleDataSubtitle": {
+    "description": "Reset sample data tile subtitle"
+  },
+  "sampleDataReloaded": "Sample countdowns reloaded!",
+  "@sampleDataReloaded": {
+    "description": "Snackbar message on data reload"
+  },
+  "shareMessage": "Track every moment that matters with Remaini ⏳ — The modern & beautiful countdown app!\n\nDownload now on Google Play:\n{url}",
+  "@shareMessage": {
+    "description": "App share message template",
+    "placeholders": {
+      "url": {
+        "type": "String",
+        "example": "https://play.google.com/..."
+      }
+    }
+  }
+}
